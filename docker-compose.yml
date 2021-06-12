@@ -1,9 +1,12 @@
-version: "3.3"
+version: "3"
 services:
   web:
-      image: hello_world_django
-      command: python manage.py runserver 0.0.0.0:8000
-      volumes:
-          - .:/code
-      ports:
-          - "8000:8000"
+    image: 132531979313.dkr.ecr.us-west-2.amazonaws.com/hello_world_django
+    ports:
+        - "8000:8000"
+    logging:
+      driver: awslogs
+      options: 
+        awslogs-group: hello_world_django
+        awslogs-region: us-west-2
+        awslogs-stream-prefix: web
